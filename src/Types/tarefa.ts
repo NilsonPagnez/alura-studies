@@ -4,4 +4,4 @@ export interface Itarefa {
     selecionado: boolean,
     completado: boolean,
     id: string
-}
+  }

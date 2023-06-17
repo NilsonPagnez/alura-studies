@@ -6,10 +6,18 @@ interface Props extends Itarefa { // Pega tudo do Itarefa e acrescenta com o que
     selecionaTarefa: (tarefaSelecionada: Itarefa) => void //Função que n retorna nada
 }
 
-export default function Item({tarefa, tempo, selecionado, completado, id, selecionaTarefa } : Props){
+export default function Item( {
+    tarefa,
+    tempo,
+    selecionado,
+    completado,
+    id,
+    selecionaTarefa
+  }: Props){
 
     return(
-        <li className={`${style.item} ${selecionado ? style.itemSelecionado : ''}`} onClick={() => selecionaTarefa({
+        <li className={`${style.item} ${selecionado ? style.itemSelecionado : ''} ${completado ? style.itemCompletado : ''  }`}
+         onClick={() => !completado &&selecionaTarefa({
             tarefa,
             tempo,
             selecionado,
@@ -22,6 +30,9 @@ export default function Item({tarefa, tempo, selecionado, completado, id, seleci
             <span>
                 {tempo}
             </span>
+            {completado &&
+                <span className={style.concluido} aria-label="tarefa completada"></span>
+            }
         </li>
     )
 }
